@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assests/favicon.ico">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top bg-slate-900 text-white p-4 shadow-lg">
+        <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">Pushan Pore</a>
+            <div class="space-x-4">
+                <a href="#about" class="hover:font-bold">About</a>
+                <a href="#experience" class="hover:font-bold">Experience</a>
+                <a href="#projects" class="hover:font-bold">Projects</a>
+                <a href="#contact" class="hover:font-bold">Contact</a>
+                <a href="#CV" class="hover:font-bold">CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="h-screen bg-cover bg-center" style="background-image: url('assests/bg.jpg');">
+        <div class="flex justify-center items-center h-full bg-black bg-opacity-40">
+            <div class="text-center text-white px-4">
+                <h1 class="text-4xl sm:text-5xl font-bold">Hello, I'm Pushan Pore</h1>
+                <p class="mt-4 text-lg">A passionate Data Engineer & Data Science Enthusiast.</p>
+                <div class="socials"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-16 px-6 bg-gray-100">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">About Me</h2>
+            <p class="text-lg text-gray-600">I am a data engineer currently working in Capgemini with a robust expertise in SQL, data pipeline development, ETL processes, and cloud computing. In my previous role as an ETL developer for clients in the Netherlands, I specialized in utilizing Azure Data Factory as the primary tool for executing ETL operations and designing, implementing, and maintaining efficient data pipelines.
+            </p>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 px-6">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Experience</h2>
+            <div class="space-y-8">
+                <!-- Job 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">Data Engineer | Capgemini India</h3>
+                    <p class="text-gray-500 text-lg mt-2">Jul 2024 - Present</p>
+                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
+                        <li>Developed and maintained data pipelines for NL customers.</li>
+                        <li>Worked with large datasets in SQL and NoSQL databases (PostgreSQL, MongoDB).</li>
+                        <li>Worked on data visualization and report creation using Power BI.</li>
+                    </ul>
+                </div>
+                <!-- Job 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">CMDB Development | Capgemini India</h3>
+                    <p class="text-gray-500 text-lg mt-2">Sep 2022 - June 2024</p>
+                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
+                        <li>Assisted in the data cleaning and maintained a healthy CMDB.</li>
+                        <li>Created data reports and visualizations for Clients.</li>
+                        <li>Worked on the migration of data from legacy system to Servicenow CMDB.</li>
+                        <li>CMDB development, client scripts, Serverside scripting</li>
+                    </ul>
+                </div>
+                <!-- Job 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">Intern | CodeDrills</h3>
+                    <p class="text-gray-500 text-lg mt-2">May 2022 - Sep 2022</p>
+                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
+                        <li>Worked as a SQL question setter for hiring assessments at CodeDrills. (Problem setting and creating test case generator).</li>
+                        <li>Developed Python script for generating DML commands for pushing test data into tables of an SQL Database.</li>
+                        <li>Tuning the performance of SQL query generated by python scripting. Which reduced 90% Manual effort while uploading a problem to environment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 px-6 bg-gray-100">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Projects</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">Project 1: Data Pipeline Automation</h3>
+                    <p class="mt-4 text-gray-600">Built an end-to-end data pipeline to automate data extraction, transformation, and loading (ETL) for a retail company.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">Project 2: Data Analytics Dashboard</h3>
+                    <p class="mt-4 text-gray-600">Developed a dashboard using Python and Tableau to help the marketing team track key metrics in real-time.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">Project 3: Cloud Data Migration</h3>
+                    <p class="mt-4 text-gray-600">Led the migration of on-premise data infrastructure to AWS cloud, reducing costs and improving scalability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-6 bg-blue-600 text-white">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Contact Me</h2>
+            <p class="text-lg">Feel free to reach out to me via email or LinkedIn.</p>
+            <div class="mt-6">
+                <a href="mailto:pushan.pore.work@gmail.com" class="bg-white text-blue-600 py-2 px-6 rounded-lg text-lg font-semibold hover:bg-gray-200">Email Me</a>
+                <a href="https://www.linkedin.com/in/pushan-pore-1401/" target="_blank" class="ml-4 bg-blue-800 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:bg-blue-700">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <p>&copy; 2024 Pushan Pore. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
