@@ -48,3 +48,12 @@ projects.forEach(project => {
   `;
   portfolioContainer.appendChild(projectItem);
 });
+
+// Hamburger menu
+
+const hamburgerIcon = document.getElementById('hamburger-icon');
+        const mobileMenu = document.getElementById('mobile-menu');
+    
+        hamburgerIcon.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
