@@ -12,47 +12,47 @@
         body {
             font-family: 'Roboto', sans-serif;
         }
+        #navbar {
+            position: sticky;
+            top: 0;
+            overflow: hidden;
+            background-color: rgb(15 23 42);
+        }
+
+            /* Navbar links */
+            #navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        /* Page content */
+        .content {
+        padding: 16px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Navbar -->
-    <nav class="navbar fixed-top bg-slate-900 text-white p-4 shadow-lg">
+               
+    <!-- Navbar Links -->
+    <nav id="navbar">
         <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#" class="text-2xl font-bold">Pushan Pore</a>
-            
-            <!-- Navbar Links -->
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold">Pushan Pore</a>
             <div class="hidden md:flex space-x-6">
-                <a href="#about" class="hover:font-bold">About</a>
-                <a href="#experience" class="hover:font-bold">Experience</a>
-                <a href="#projects" class="hover:font-bold">Projects</a>
-                <a href="#contact" class="hover:font-bold">Contact</a>
-                <a href="assests\Pushan Pore_Resume.pdf" target="_blank" class="hover:font-bold">CV</a>
-            </div>
-    
-            <!-- Hamburger Menu (for mobile view) -->
-            <div class="md:hidden flex items-center">
-                <button class="text-white focus:outline-none" id="hamburger-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    
-        <!-- Mobile Dropdown Menu -->
-        <div class="md:hidden hidden" id="mobile-menu">
-            <div class="bg-slate-900 text-white space-y-4 p-4">
-                <a href="#about" class="hover:font-bold">About</a>
-                <a href="#experience" class="hover:font-bold">Experience</a>
-                <a href="#projects" class="hover:font-bold">Projects</a>
-                <a href="#contact" class="hover:font-bold">Contact</a>
-                <a href="assests\Pushan Pore_Resume.pdf" download >CV</a>
+                
+                <a href="#about" class="text-xl " style="padding-top: 17px;">About</a>
+                <a href="#experience" class="text-xl " style="padding-top: 17px;">Experience</a>
+                <a href="#projects" class="text-xl " style="padding-top: 17px;">Projects</a>
+                <a href="#contact" class="text-xl " style="padding-top: 17px;">Contact</a>
+                <a href="assests\Pushan Pore_Resume.pdf" target="_blank" class="text-xl " style="padding-top: 17px;">CV</a>
             </div>
         </div>
     </nav>
-    
    
     
 
