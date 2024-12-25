@@ -1,0 +1,37 @@
+<!-- Navbar -->
+    <nav class="navbar fixed-top bg-slate-900 text-white p-4 shadow-lg">
+        <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold">Pushan Pore</a>
+            
+            <!-- Navbar Links -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="hover:font-bold">About</a>
+                <a href="#experience" class="hover:font-bold">Experience</a>
+                <a href="#projects" class="hover:font-bold">Projects</a>
+                <a href="#contact" class="hover:font-bold">Contact</a>
+                <a href="assests\Pushan Pore_Resume.pdf" target="_blank" class="hover:font-bold">CV</a>
+            </div>
+    
+            <!-- Hamburger Menu (for mobile view) -->
+            <div class="md:hidden flex items-center">
+                <button class="text-white focus:outline-none" id="hamburger-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="bg-slate-900 text-white space-y-4 p-4">
+                <a href="#about" class="hover:font-bold">About</a>
+                <a href="#experience" class="hover:font-bold">Experience</a>
+                <a href="#projects" class="hover:font-bold">Projects</a>
+                <a href="#contact" class="hover:font-bold">Contact</a>
+                <a href="assests\Pushan Pore_Resume.pdf" download >CV</a>
+            </div>
+        </div>
+    </nav>
+    
