@@ -81,6 +81,8 @@
             display: block;
             text-align: left;
         }
+
+        
     }
     </style>
 </head>
@@ -258,5 +260,19 @@
     <!-- Scroll to top -->
     <a href="#"><img src="assests\up-arrow.png" alt="" style="position: fixed; right: 10px;  top: 90%; width: 70px; scroll-behavior: smooth;"></a>
     
-</body>
+    <script>
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburgerIcon.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Optional: Close mobile menu when a link is clicked
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
 </html>
