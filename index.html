@@ -2,9 +2,11 @@
 <html lang="en">
 
 <head>
+  <script>document.documentElement.classList.add("js-animate")</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pushan Pore — Data Engineer</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"
@@ -33,7 +35,29 @@
       --gold2: #e8c98a;
       --teal: #5ecfbe;
       --blue: #7098f5;
+      --nav-bg: rgba(7, 8, 13, 0.82);
     }
+
+    html.light {
+      --bg: #f5f6fa;
+      --bg2: #eef0f7;
+      --bg3: #e8eaf3;
+      --surface: #ffffff;
+      --surface2: #f0f2f9;
+      --border: rgba(0, 0, 0, 0.07);
+      --border2: rgba(0, 0, 0, 0.13);
+      --text: #1a1d2e;
+      --text-muted: #5a5f7a;
+      --text-dim: #b0b4c8;
+      --gold: #a8721f;
+      --gold2: #c9920e;
+      --teal: #1a9e8a;
+      --blue: #3a6fd8;
+      --nav-bg: rgba(245, 246, 250, 0.88);
+    }
+
+    html.light .btn-gold { color: #ffffff; }
+    html.light .nav-resume:hover { color: #ffffff; }
 
     html {
       scroll-behavior: smooth
@@ -83,7 +107,7 @@
       padding: 0 clamp(1.5rem, 5vw, 5rem);
       height: 64px;
       border-bottom: 1px solid var(--border);
-      background: rgba(7, 8, 13, 0.82);
+      background: var(--nav-bg);
       backdrop-filter: blur(20px)
     }
 
@@ -194,9 +218,8 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
-      opacity: 0;
-      animation: fadeUp 0.8s 0.3s ease forwards
     }
+    html.js-animate .eyebrow-text { opacity: 0; animation: fadeUp 0.8s 0.3s ease forwards }
 
     .hero-name {
       font-family: 'Cormorant Garamond', serif;
@@ -205,9 +228,8 @@
       line-height: 1;
       letter-spacing: -0.01em;
       color: var(--text);
-      opacity: 0;
-      animation: fadeUp 0.9s 0.5s ease forwards
     }
+    html.js-animate .hero-name { opacity: 0; animation: fadeUp 0.9s 0.5s ease forwards }
 
     .hero-name strong {
       font-weight: 600;
@@ -223,9 +245,8 @@
       font-weight: 300;
       color: var(--text-muted);
       margin-top: 0.5rem;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.7s ease forwards
     }
+    html.js-animate .hero-title { opacity: 0; animation: fadeUp 0.9s 0.7s ease forwards }
 
     .hero-desc {
       margin-top: 1.75rem;
@@ -234,9 +255,8 @@
       font-weight: 300;
       line-height: 1.88;
       max-width: 480px;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.9s ease forwards
     }
+    html.js-animate .hero-desc { opacity: 0; animation: fadeUp 0.9s 0.9s ease forwards }
 
     .hero-desc strong {
       color: var(--text);
@@ -248,9 +268,8 @@
       gap: 1rem;
       margin-top: 2.5rem;
       flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.9s 1.1s ease forwards
     }
+    html.js-animate .hero-ctas { opacity: 0; animation: fadeUp 0.9s 1.1s ease forwards }
 
     .btn-gold {
       font-family: 'JetBrains Mono', monospace;
@@ -295,10 +314,9 @@
       margin-top: 4rem;
       padding-top: 2.5rem;
       border-top: 1px solid var(--border);
-      opacity: 0;
-      animation: fadeUp 0.9s 1.3s ease forwards;
       flex-wrap: wrap
     }
+    html.js-animate .hero-stats { opacity: 0; animation: fadeUp 0.9s 1.3s ease forwards }
 
     .stat-val {
       font-family: 'Cormorant Garamond', serif;
@@ -848,16 +866,9 @@
       opacity: 1
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.75s ease, transform 0.75s ease
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0)
-    }
+    .reveal { transition: opacity 0.75s ease, transform 0.75s ease }
+    html.js-animate .reveal { opacity: 0; transform: translateY(28px); }
+    .reveal.in { opacity: 1 !important; transform: translateY(0) !important; }
 
     @media(max-width:900px) {
       .about-grid {
@@ -884,6 +895,15 @@
         display: none
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .particle { display: none !important; }
+      #sphere-canvas { display: none !important; }
+      .reveal, .reveal-left { opacity: 1 !important; transform: none !important; }
+      .skill-bar { transition: none !important; }
+    }
+
+    #sphere-canvas { will-change: transform; }
   </style>
 </head>
 
@@ -901,8 +921,10 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="https://pushanpore014.github.io/Portfolio/CV/Pushan_Pore_Resume.pdf" class="nav-resume"
-      target="_blank">Résumé ↗</a>
+    <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;">
+      <a href="https://pushanpore014.github.io/Portfolio/CV/Pushan_Pore_Resume.pdf" class="nav-resume" target="_blank">Résumé ↗</a>
+      <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" style="background:var(--surface);border:1px solid var(--border2);color:var(--text);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:0.95rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">🌙</button>
+    </div>
   </nav>
 
   <section id="hero">
@@ -1183,79 +1205,133 @@
     <a href="#hero">Back to top ↑</a>
   </footer>
 
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+      html.classList.toggle('light');
+      const isLight = html.classList.contains('light');
+      btn.textContent = isLight ? '☀️' : '🌙';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.documentElement.classList.add('light');
+        document.addEventListener('DOMContentLoaded', function() {
+          const btn = document.getElementById('theme-toggle');
+          if (btn) btn.textContent = '☀️';
+        });
+      }
+    })();
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
-    // CURSOR
+    // CURSOR — only on devices with a real pointer (not touch/mobile)
+    const isPointer = window.matchMedia('(pointer: fine)').matches;
     const cur = document.getElementById('cur'), ring = document.getElementById('curRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = (mx - 4) + 'px'; cur.style.top = (my - 4) + 'px' });
-    (function ac() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = (rx - 16) + 'px'; ring.style.top = (ry - 16) + 'px'; requestAnimationFrame(ac) })();
-    document.querySelectorAll('a,button').forEach(el => { el.addEventListener('mouseenter', () => { cur.style.transform = 'scale(2.5)'; ring.style.transform = 'scale(1.5)' }); el.addEventListener('mouseleave', () => { cur.style.transform = 'scale(1)'; ring.style.transform = 'scale(1)' }) });
+    if (isPointer && cur && ring) {
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      let curRAF;
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = (mx - 4) + 'px'; cur.style.top = (my - 4) + 'px' });
+      (function ac() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = (rx - 16) + 'px'; ring.style.top = (ry - 16) + 'px'; curRAF = requestAnimationFrame(ac) })();
+      document.querySelectorAll('a,button').forEach(el => {
+        el.addEventListener('mouseenter', () => { cur.style.transform = 'scale(2.5)'; ring.style.transform = 'scale(1.5)' });
+        el.addEventListener('mouseleave', () => { cur.style.transform = 'scale(1)'; ring.style.transform = 'scale(1)' });
+      });
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) cancelAnimationFrame(curRAF);
+        else (function ac() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = (rx - 16) + 'px'; ring.style.top = (ry - 16) + 'px'; curRAF = requestAnimationFrame(ac) })();
+      });
+    } else {
+      if (cur) cur.style.display = 'none';
+      if (ring) ring.style.display = 'none';
+    }
 
-    // PARTICLES
-    const pc = document.getElementById('particles');
-    for (let i = 0; i < 16; i++) { const p = document.createElement('div'); p.className = 'particle'; const x = Math.random() * 40 + 5, y = Math.random() * 80 + 10; p.style.cssText = `left:${x}%;top:${y}%;position:absolute;--dur:${4 + Math.random() * 6}s;--del:${Math.random() * 4}s;--dx:${(Math.random() - .5) * 60}px`; pc.appendChild(p) }
+    // PARTICLES — reduced to 8, skip on mobile
+    if (isPointer) {
+      const pc = document.getElementById('particles');
+      if (pc) {
+        for (let i = 0; i < 8; i++) {
+          const p = document.createElement('div');
+          p.className = 'particle';
+          const x = Math.random() * 40 + 5, y = Math.random() * 80 + 10;
+          p.style.cssText = `left:${x}%;top:${y}%;position:absolute;--dur:${4 + Math.random() * 6}s;--del:${Math.random() * 4}s;--dx:${(Math.random() - .5) * 60}px`;
+          pc.appendChild(p);
+        }
+      }
+    }
 
-    // THREE.JS SPHERE
+    // THREE.JS SPHERE — pauses when tab hidden, skips on mobile
     (function () {
       const canvas = document.getElementById('sphere-canvas');
       if (!canvas || typeof THREE === 'undefined') return;
+      if (!isPointer) { canvas.style.display = 'none'; return; }
       const W = canvas.offsetWidth || 560, H = canvas.offsetHeight || 560;
       canvas.width = W * window.devicePixelRatio; canvas.height = H * window.devicePixelRatio;
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(window.devicePixelRatio); renderer.setSize(W, H); renderer.setClearColor(0x000000, 0);
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'low-power' });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); renderer.setSize(W, H); renderer.setClearColor(0x000000, 0);
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 1000); camera.position.z = 3.0;
       const group = new THREE.Group(); scene.add(group);
 
-      // Main geodesic sphere — icosahedron subdivision 3 for football-like polygon structure
       const icoGeo = new THREE.IcosahedronGeometry(1, 3);
       const edges = new THREE.EdgesGeometry(icoGeo);
       const matOuter = new THREE.LineBasicMaterial({ color: 0xc9a96e, transparent: true, opacity: 0.5 });
-      const wireOuter = new THREE.LineSegments(edges, matOuter);
-      group.add(wireOuter);
+      group.add(new THREE.LineSegments(edges, matOuter));
 
-      // Inner smaller geodesic
       const icoGeo2 = new THREE.IcosahedronGeometry(0.68, 2);
       const edges2 = new THREE.EdgesGeometry(icoGeo2);
       const matInner = new THREE.LineBasicMaterial({ color: 0x5ecfbe, transparent: true, opacity: 0.18 });
       group.add(new THREE.LineSegments(edges2, matInner));
 
-      // Three orbital rings at different tilts
-      const torusMat = (c, o) => new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: o, wireframe: false });
+      const torusMat = (c, o) => new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: o });
       [[0xc9a96e, 0.3, 0, 0], [0x5ecfbe, 0.15, Math.PI / 3, Math.PI / 5], [0x7098f5, 0.12, Math.PI / 2, Math.PI / 4]].forEach(([col, op, rx, ry]) => {
         const t = new THREE.Mesh(new THREE.TorusGeometry(1, 0.003, 4, 90), torusMat(col, op));
         t.rotation.x = rx; t.rotation.y = ry; group.add(t);
       });
 
-      // Vertex dots on surface
       const verts = icoGeo.attributes.position;
       const dotPositions = [];
-      for (let i = 0; i < verts.count; i += 2) {
-        dotPositions.push(verts.getX(i), verts.getY(i), verts.getZ(i));
-      }
+      for (let i = 0; i < verts.count; i += 2) dotPositions.push(verts.getX(i), verts.getY(i), verts.getZ(i));
       const dotGeo = new THREE.BufferGeometry();
       dotGeo.setAttribute('position', new THREE.Float32BufferAttribute(dotPositions, 3));
       group.add(new THREE.Points(dotGeo, new THREE.PointsMaterial({ color: 0xe8c98a, size: 0.022, transparent: true, opacity: 0.8 })));
 
-      // Axis pole
       const pole = new THREE.Line(
         new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -1.2, 0), new THREE.Vector3(0, 1.2, 0)]),
         new THREE.LineBasicMaterial({ color: 0xc9a96e, transparent: true, opacity: 0.2 })
       );
       group.add(pole);
 
-      let t = 0, tx = 0, ty = 0, cx = 0, cy = 0;
+      let t = 0, tx = 0, ty = 0, cx = 0, cy = 0, sphereRAF;
       document.addEventListener('mousemove', e => { tx = (e.clientX / window.innerWidth - .5) * 0.9; ty = (e.clientY / window.innerHeight - .5) * 0.6 });
-      (function animate() {
-        requestAnimationFrame(animate);
+
+      function animate() {
+        sphereRAF = requestAnimationFrame(animate);
         t += 0.004; cx += (tx - cx) * 0.035; cy += (ty - cy) * 0.035;
         group.rotation.y = t + cx; group.rotation.x = 0.1 + cy;
         group.children[2].rotation.x += 0.005;
         group.children[3].rotation.z += 0.003;
         renderer.render(scene, camera);
-      })();
+      }
+      animate();
+
+      // Pause rendering when tab is not visible
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) cancelAnimationFrame(sphereRAF);
+        else animate();
+      });
     })();
+
+    // ANIMATION FALLBACK — force visibility if CSS animations fail
+    setTimeout(() => {
+      document.querySelectorAll('.eyebrow-text,.hero-name,.hero-title,.hero-desc,.hero-ctas,.hero-stats').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }, 2000);
 
     // SCROLL REVEAL
     const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('in') }) }, { threshold: 0.08 });
@@ -1274,5 +1350,4 @@
     });
   </script>
 </body>
-
 </html>
