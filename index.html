@@ -56,8 +56,13 @@
       --nav-bg: rgba(245, 246, 250, 0.88);
     }
 
-    html.light .btn-gold { color: #ffffff; }
-    html.light .nav-resume:hover { color: #ffffff; }
+    html.light .btn-gold {
+      color: #ffffff;
+    }
+
+    html.light .nav-resume:hover {
+      color: #ffffff;
+    }
 
     html {
       scroll-behavior: smooth
@@ -219,7 +224,11 @@
       text-transform: uppercase;
       color: var(--gold);
     }
-    html.js-animate .eyebrow-text { opacity: 0; animation: fadeUp 0.8s 0.3s ease forwards }
+
+    html.js-animate .eyebrow-text {
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s ease forwards
+    }
 
     .hero-name {
       font-family: 'Cormorant Garamond', serif;
@@ -229,7 +238,11 @@
       letter-spacing: -0.01em;
       color: var(--text);
     }
-    html.js-animate .hero-name { opacity: 0; animation: fadeUp 0.9s 0.5s ease forwards }
+
+    html.js-animate .hero-name {
+      opacity: 0;
+      animation: fadeUp 0.9s 0.5s ease forwards
+    }
 
     .hero-name strong {
       font-weight: 600;
@@ -246,7 +259,11 @@
       color: var(--text-muted);
       margin-top: 0.5rem;
     }
-    html.js-animate .hero-title { opacity: 0; animation: fadeUp 0.9s 0.7s ease forwards }
+
+    html.js-animate .hero-title {
+      opacity: 0;
+      animation: fadeUp 0.9s 0.7s ease forwards
+    }
 
     .hero-desc {
       margin-top: 1.75rem;
@@ -256,7 +273,11 @@
       line-height: 1.88;
       max-width: 480px;
     }
-    html.js-animate .hero-desc { opacity: 0; animation: fadeUp 0.9s 0.9s ease forwards }
+
+    html.js-animate .hero-desc {
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s ease forwards
+    }
 
     .hero-desc strong {
       color: var(--text);
@@ -269,7 +290,11 @@
       margin-top: 2.5rem;
       flex-wrap: wrap;
     }
-    html.js-animate .hero-ctas { opacity: 0; animation: fadeUp 0.9s 1.1s ease forwards }
+
+    html.js-animate .hero-ctas {
+      opacity: 0;
+      animation: fadeUp 0.9s 1.1s ease forwards
+    }
 
     .btn-gold {
       font-family: 'JetBrains Mono', monospace;
@@ -316,7 +341,11 @@
       border-top: 1px solid var(--border);
       flex-wrap: wrap
     }
-    html.js-animate .hero-stats { opacity: 0; animation: fadeUp 0.9s 1.3s ease forwards }
+
+    html.js-animate .hero-stats {
+      opacity: 0;
+      animation: fadeUp 0.9s 1.3s ease forwards
+    }
 
     .stat-val {
       font-family: 'Cormorant Garamond', serif;
@@ -866,9 +895,19 @@
       opacity: 1
     }
 
-    .reveal { transition: opacity 0.75s ease, transform 0.75s ease }
-    html.js-animate .reveal { opacity: 0; transform: translateY(28px); }
-    .reveal.in { opacity: 1 !important; transform: translateY(0) !important; }
+    .reveal {
+      transition: opacity 0.75s ease, transform 0.75s ease
+    }
+
+    html.js-animate .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+
+    .reveal.in {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
 
     @media(max-width:900px) {
       .about-grid {
@@ -897,13 +936,28 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .particle { display: none !important; }
-      #sphere-canvas { display: none !important; }
-      .reveal, .reveal-left { opacity: 1 !important; transform: none !important; }
-      .skill-bar { transition: none !important; }
+      .particle {
+        display: none !important;
+      }
+
+      #sphere-canvas {
+        display: none !important;
+      }
+
+      .reveal,
+      .reveal-left {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .skill-bar {
+        transition: none !important;
+      }
     }
 
-    #sphere-canvas { will-change: transform; }
+    #sphere-canvas {
+      will-change: transform;
+    }
   </style>
 </head>
 
@@ -922,8 +976,10 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;">
-      <a href="https://pushanpore014.github.io/Portfolio/CV/Pushan_Pore_Resume.pdf" class="nav-resume" target="_blank">Résumé ↗</a>
-      <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" style="background:var(--surface);border:1px solid var(--border2);color:var(--text);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:0.95rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">🌙</button>
+      <a href="https://pushanpore014.github.io/Portfolio/CV/Pushan_Pore_Resume.pdf" class="nav-resume"
+        target="_blank">Résumé ↗</a>
+      <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"
+        style="background:var(--surface);border:1px solid var(--border2);color:var(--text);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:0.95rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">🌙</button>
     </div>
   </nav>
 
@@ -937,10 +993,10 @@
       <h1 class="hero-name">Pushan<br><strong>Pore.</strong></h1>
       <p class="hero-title">Turning raw data into real intelligence.</p>
       <p class="hero-desc">
-        <strong>3.5+ years</strong> engineering cloud data systems at Capgemini —
-        from <strong>medallion-architecture pipelines</strong> on Azure to
-        <strong>Splunk-powered observability</strong> for global enterprises like Bayer, CSL Behring &amp; Carnival.
-        2× Microsoft Azure Certified.
+      <p><strong>2× Microsoft Azure Certified Senior Data Engineer</strong> with 3.5+ years of experience. I specialize
+        in <strong>Azure cloud systems</strong> and <strong>medallion-architecture pipelines</strong>, focused on
+        engineering high-performance, resilient enterprise data ecosystems and <strong>legacy-to-cloud
+          migrations</strong> for global leaders in the Life Sciences and Hospitality sectors.
       </p>
       <div class="hero-ctas">
         <a href="#projects" class="btn-gold">View Projects</a>
@@ -963,15 +1019,17 @@
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I'm a <strong>Senior Data Engineer</strong> at Capgemini, specialising in Azure cloud platforms and Big Data
-          processing. My work spans two major domains: <strong>legacy-to-cloud migration</strong> using
-          Bronze–Silver–Gold medallion architecture, and <strong>advanced observability analytics</strong> using Splunk
-          ITSI for Fortune-500 clients.</p>
+        <p><strong>2× Microsoft Azure Certified Senior Data Engineer</strong> specializing in <strong>Azure cloud
+            platforms</strong> and <strong>medallion-architecture pipelines</strong>. I’ve migrated 23+ tables and
+          millions of records from legacy PostgreSQL to Azure, automated <strong>SCD Type 2</strong> ingestion, and
+          implemented Splunk-powered observability./p>
         <p>I've migrated <strong>23+ tables and millions of records</strong> from legacy PostgreSQL to Azure, built SCD
           Type 2 pipelines, automated hybrid ingestion with Self-hosted Integration Runtime, and developed Splunk ITSI
           dashboards that reduced manual monitoring effort by <strong>100%</strong>.</p>
-        <p>Certified across four credentials — <strong>DP-203 · DP-900 · ServiceNow CSA · ServiceNow CAD</strong> — and
-          a passionate <strong>F1 enthusiast</strong>. </p>
+        <p>Certified across four credentials — <strong>DP-203 · DP-900 · ServiceNow CSA · ServiceNow CAD</strong> —
+          Outside of high-performance data systems, I’m a passionate
+          <strong>F1 enthusiast</strong>.
+        </p>
       </div>
       <div class="skills-wrap reveal">
         <div class="skill-row">
@@ -1080,7 +1138,6 @@
         <div class="tl-company">Capgemini Technology Services India Ltd<span class="tl-loc">· Mumbai</span></div>
         <ul class="tl-items">
           <li>Served as CMDB Manager for Netherlands-based enterprise clients.</li>
-          <li>Automated on-premise to ServiceNow CMDB migration workflows.</li>
           <li>Performed weekly audits maintaining a healthy, accurate CMDB.</li>
           <li>Developed SQL scripts for extracting on-prem CMDB data, enabling deep-dive data analysis.</li>
           <li>CMDB development including client scripts and server-side scripting.</li>
@@ -1157,9 +1214,9 @@
       <div class="proj-card">
         <div class="proj-num">Project · 02</div>
         <div class="proj-title">Splunk Big Data Observability</div>
-        <p class="proj-desc">Built Splunk ITSI dashboards for global clients including Bayer, CSL Behring, and Carnival.
-          Delivered anomaly detection, capacity prediction, delay logic, and custom predictive analyser dashboards —
-          reducing manual monitoring overhead by 100%.</p>
+        <p class="proj-desc">Architected 100% automated Splunk ITSI observability for global Life Sciences and
+          Hospitality leaders, replacing manual monitoring with advanced anomaly detection and predictive capacity
+          analytics.</p>
         <div class="proj-tags"><span class="proj-tag">Splunk</span><span class="proj-tag">SPL</span><span
             class="proj-tag">ITSI</span><span class="proj-tag">MLTK</span><span class="proj-tag">Anomaly
             Detection</span></div>
@@ -1218,7 +1275,7 @@
       const saved = localStorage.getItem('theme');
       if (saved === 'light') {
         document.documentElement.classList.add('light');
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
           const btn = document.getElementById('theme-toggle');
           if (btn) btn.textContent = '☀️';
         });
@@ -1350,4 +1407,5 @@
     });
   </script>
 </body>
+
 </html>
