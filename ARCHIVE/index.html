@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pushan Pore Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #navbar {
+
+            position: sticky;
+            top: 0;
+            overflow: hidden;
+            padding: 5px 16px;
+            background-color: rgb(5, 13, 31);
+        }
+
+        /* Navbar links */
+        #navbar a {
+
+            height: 25px;
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            /* padding: 14px 16px; */
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body class="bg-indigo-50 text-gray-800">
+    <!-- Navbar Links -->
+    <nav id="navbar" class="bg-slate-900 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto flex justify-between items-center px-4 py-3">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold text-white">Pushan Pore</a>
+
+            <!-- Menu Links (desktop) -->
+            <div id="menu" class="hidden md:flex space-x-6 text-white text-lg">
+                <a href="#about" class="hover:text-green-400">About</a>
+                <a href="#experience" class="hover:text-green-400">Experience</a>
+                <a href="#certifications" class="hover:text-green-400">Certifications</a>
+                <a href="#projects" class="hover:text-green-400">Projects</a>
+                <a href="#contact" class="hover:text-green-400">Contact</a>
+                <a href="CV/Pushan_Pore_Resume.pdf" target="_blank" class="hover:text-green-400">Resume</a>
+            </div>
+
+            <!-- Hamburger Icon (mobile) -->
+            <button id="hamburger" class="md:hidden flex items-center text-white focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900 text-white px-6 pb-6 flex flex-col space-y-4 text-lg">
+            <a href="#about" class="block py-2 hover:text-green-400">About</a>
+            <a href="#experience" class="block py-2 hover:text-green-400">Experience</a>
+            <a href="#certifications" class="block py-2 hover:text-green-400">Certifications</a>
+            <a href="#projects" class="block py-2 hover:text-green-400">Projects</a>
+            <a href="#contact" class="block py-2 hover:text-green-400">Contact</a>
+            <a href="CV/Pushan_Pore_Resume.pdf" target="_blank" class="block py-2 hover:text-green-400">Resume</a>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="h-screen bg-cover bg-center"
+        style="background-image: url('assets/bg.jpg'); background-attachment: fixed; background-repeat: no-repeat; background-size: cover; ">
+        <div class="flex justify-center items-center h-full bg-black bg-opacity-40">
+            <div class="text-center text-white px-4">
+                <h1 class="text-4xl sm:text-5xl font-bold">Hello, I'm Pushan</h1>
+                <p class="mt-4 text-lg">A Passionate Data Engineer & F1 Enthusiast</p>
+                <div class="socials"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-16 px-6 bg-gray-100">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">About Me</h2>
+            <p class="text-lg text-gray-600">
+                I am an Azure Data Engineer with over 2.8 years of hands-on experience in designing, developing, and
+                optimizing data solutions on the Microsoft Azure platform. At Capgemini, I have played a key role in two
+                significant projects. The first as a Azure Data Engineer involving data migration from legacy
+                on-premises systems to Azure SQL Database, where I utilized Azure Data Factory and Databricks to build
+                efficient data pipelines focused on data cleansing, transformation, and analysis, while maintaining a
+                seamless data flow. The second project centers on advanced analytics using Splunk for high-profile
+                clients such as Toll, Bayer, and CSL Behring. In this role, I leverage Search Processing Language (SPL)
+                to analyze unstructured data and implement critical features like anomaly detection, dynamic
+                thresholding, and predictive modeling through Splunk's Machine Learning Toolkit (MLTK) to reduce
+                incident overhead and improve operational efficiency. I am proficient in Azure Data Factory, Azure Data
+                Lake Storage, SQL, Python, SPL, Databricks, and MLTK, which enables me to deliver comprehensive data
+                engineering and analytics solutions that meet complex business needs.
+            </p>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 px-6">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Experience</h2>
+            <div class="space-y-8">
+                <!-- Job 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">Junior Data Engineer | Capgemini India</h3>
+                    <p class="text-gray-500 text-lg mt-2">Jul 2024 - Present</p>
+                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
+                        <p>Developed and maintained data pipelines using Azure Data Factory for Data Migration and
+                            Transformation for NL customers.</p>
+                        <br>
+                        <p>Database Migration from legacy MSSQL server to ADLS.</p>
+                        <br>
+                        <p>Developed advanced analytics in Splunk using SPL, enabling capacity prediction, anomaly
+                            detection, delay logic </p>
+                        <br>
+                        <p>Rapid Resolver to accelerate issue resolution and improve system performance.</p>
+                    </ul>
+                </div>
+                <!-- Job 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">CMDB Data Management | Capgemini India</h3>
+                    <p class="text-gray-500 text-lg mt-2">Sep 2022 - June 2024</p>
+                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
+                        <p>Worked on data cleaning and maintained a healthy CMDB.</p>
+                        <br>
+                        <p>Created data reports and visualizations for Clients.</p>
+                        <br>
+                        <p>Worked on the migration of data from legacy system to Servicenow CMDB.</p>
+                        <br>
+                        <p>CMDB development, client scripts, Serverside scripting</p>
+                    </ul>
+                </div>
+                <!-- Job 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">Intern | CodeDrills</h3>
+                    <p class="text-gray-500 text-lg mt-2">May 2022 - Sep 2022</p>
+                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
+                        <p>Worked as a SQL question setter for hiring assessments at CodeDrills. (Problem setting and
+                            creating test case generator).</p>
+                        <br>
+                        <p>Developed Python script for generating DML commands for pushing test data into tables of an
+                            SQL Database.</p>
+                        <br>
+                        <p>Tuning the performance of SQL query generated by python scripting. Which reduced 90% Manual
+                            effort while uploading a problem to environment</p>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="py-16 px-6">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Certifications</h2>
+            <div class="space-y-8">
+                <!-- certificate 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg text-justify">
+                    <h3 class="text-2xl font-semibold">Azure Data Engineer Associate Certification <a
+                            href="https://tinyurl.com/Data-Engineer-Associate" target="_blank"> 🔗</a></h3>
+                    <p class="text-gray-500 text-lg mt-2">Microsoft</p>
+                    <p class="text-gray-500 text-lg mt-2">Issued : 03-Dec-2024</p>
+                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
+                        <!-- Add certificate details -->
+                    </ul>
+                </div>
+
+                <!-- certificate 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg text-justify">
+                    <h3 class="text-2xl font-semibold">Azure Data Engineer Fundamentals Certification <a
+                            href="https://tinyurl.com/Data-Engineer-Fundamentals" target="_blank"> 🔗</a></h3>
+                    <p class="text-gray-500 text-lg mt-2">Microsoft</p>
+                    <p class="text-gray-500 text-lg mt-2">Issued : 01-Sep-2024</p>
+                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
+                        <!-- Add certificate details -->
+                    </ul>
+                </div>
+
+                <!-- certificate 3 -->
+                <!-- <div class="bg-white p-6 rounded-xl shadow-lg text-justify">
+                    <h3 class="text-2xl font-semibold">Certified System Administrator <a
+                            href="https://tinyurl.com/CSAServicenow" target="_blank"> 🔗</a></h3>
+                    <p class="text-gray-500 text-lg mt-2">ServiceNow</p>
+                    <p class="text-gray-500 text-lg mt-2">Issued : 04-Dec-2023</p>
+                   
+                </div> -->
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 px-6 bg-gray-100">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Key Projects</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">Project 1: Azure Pipeline Development</h3>
+                    <p class="mt-4 text-gray-600">Contributed extensively to a database migration project for Capgemini
+                        Netherlands,
+                        focusingmonitoring and reporting setup using Azure. Built ETL pipelines in Azure Data Factory,
+                        managed
+                        data in ADLS Gen2, and performedlarge-scale processing with Azure Databricks and Spark.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">Project 2: Azure Data Flow </h3>
+                    <p class="mt-4 text-gray-600">As part of a collaborative team, I played a key role in developing and
+                        implementing an end-to-end data pipeline using Azure Data Factory,
+                        focusing on data preprocessing and cleaning to ensure accurate and reliable reporting.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold">Project 3: Splunk Advanced Analytics</h3>
+                    <p class="mt-4 text-gray-600">Utilized Splunk and Search Processing Language (SPL) to perform
+                        advanced analytics, developing anomaly detection, delay logic, and rapid resolution mechanisms
+                        to minimize major incident impact for North American and European clients, including Toll and
+                        CSL Behring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-6 bg-sky-500/100 text-white">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Contact Me</h2>
+            <p class="text-lg">Feel free to reach out to me via Email or LinkedIn.</p>
+            <div class="mt-6">
+                <a href="https://mail.google.com/mail/?view=cm&to=pushan.pore.work@gmail.com" target="_blank"
+                    class="bg-white text-blue-600 py-2 px-6 rounded-lg text-lg font-semibold hover:bg-gray-200">
+                    Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/pushan-pore-1401/" target="_blank"
+                    class="ml-4 bg-blue-800 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:bg-blue-700">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <p>&copy; 2025 Pushan Pore.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top"
+        class="fixed bottom-6 right-6 hidden white hover:bg-inherit text-black px-4 py-2 rounded-full shadow-xl z-50">
+        ↑ Top
+    </button>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when link clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.remove('hidden');
+            } else {
+                scrollToTopBtn.classList.add('hidden');
+            }
+        });
+
+        // Scroll to top on click
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+    </script>
+
+</html>

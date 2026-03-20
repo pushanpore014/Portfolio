@@ -1,304 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pushan Pore Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        #navbar {
-
-            position: sticky;
-            top: 0;
-            overflow: hidden;
-            padding: 5px 16px;
-            background-color: rgb(5, 13, 31);
-        }
-
-        /* Navbar links */
-        #navbar a {
-
-            height: 25px;
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            /* padding: 14px 16px; */
-            text-decoration: none;
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pushan Pore — Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07080d;--bg2:#0c0e15;--bg3:#10121a;
+  --surface:#151820;--surface2:#1c1f2e;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);
+  --text:#dfe2ed;--text-muted:#6b7194;--text-dim:#373b52;
+  --gold:#c9a96e;--gold2:#e8c98a;--teal:#5ecfbe;--blue:#7098f5;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7;overflow-x:hidden}
+.cursor{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transition:transform 0.15s ease;mix-blend-mode:difference}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(201,169,110,0.4);border-radius:50%;pointer-events:none;z-index:9998;transition:all 0.08s ease}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,5vw,5rem);height:64px;border-bottom:1px solid var(--border);background:rgba(7,8,13,0.82);backdrop-filter:blur(20px)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:0.04em}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-resume{font-family:'JetBrains Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,169,110,0.35);padding:7px 18px;border-radius:2px;text-decoration:none;transition:all 0.25s}
+.nav-resume:hover{background:var(--gold);color:#07080d}
+#hero{min-height:100vh;display:flex;align-items:center;padding:80px clamp(1.5rem,8vw,8rem) 0;position:relative;overflow:hidden}
+#sphere-canvas{position:absolute;right:clamp(-60px,2vw,40px);top:50%;transform:translateY(-50%);width:clamp(340px,44vw,620px);height:clamp(340px,44vw,620px);opacity:0.6;pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:600px}
+.hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:2rem}
+.eyebrow-line{width:40px;height:1px;background:var(--gold);animation:expandLine 1s ease forwards}
+@keyframes expandLine{from{width:0}to{width:40px}}
+.eyebrow-text{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0;animation:fadeUp 0.8s 0.3s ease forwards}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,8vw,6.5rem);font-weight:300;line-height:1;letter-spacing:-0.01em;color:var(--text);opacity:0;animation:fadeUp 0.9s 0.5s ease forwards}
+.hero-name strong{font-weight:600;background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.2vw,1.65rem);font-weight:300;font-style:italic;color:var(--text-muted);margin-top:0.5rem;opacity:0;animation:fadeUp 0.9s 0.7s ease forwards}
+.hero-desc{margin-top:1.75rem;font-size:0.94rem;color:var(--text-muted);font-weight:300;line-height:1.88;max-width:480px;opacity:0;animation:fadeUp 0.9s 0.9s ease forwards}
+.hero-desc strong{color:var(--text);font-weight:500}
+.hero-ctas{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.9s 1.1s ease forwards}
+.btn-gold{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--gold);color:#07080d;padding:13px 28px;border-radius:2px;text-decoration:none;font-weight:500;transition:all 0.25s}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-outline{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--border2);padding:13px 28px;border-radius:2px;text-decoration:none;transition:all 0.25s}
+.btn-outline:hover{color:var(--text);border-color:rgba(255,255,255,0.3)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--border);opacity:0;animation:fadeUp 0.9s 1.3s ease forwards;flex-wrap:wrap}
+.stat-val{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:var(--text);line-height:1;display:block}
+.stat-val span{color:var(--gold)}
+.stat-lbl{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-top:4px;display:block}
+.particle{position:absolute;width:2px;height:2px;background:var(--gold);border-radius:50%;opacity:0;animation:float var(--dur) var(--del) ease-in-out infinite}
+@keyframes float{0%{opacity:0;transform:translateY(0) translateX(0)}20%{opacity:0.4}80%{opacity:0.2}100%{opacity:0;transform:translateY(-120px) translateX(var(--dx))}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent);margin:0 clamp(1.5rem,8vw,8rem)}
+section{padding:6rem clamp(1.5rem,8vw,8rem)}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:flex;align-items:center;gap:12px}
+.sec-label::after{content:'';flex:1;max-width:60px;height:1px;background:var(--gold);opacity:0.4}
+h2.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:300;color:var(--text);letter-spacing:-0.01em;margin-bottom:3rem;line-height:1.15}
+h2.sec-title em{font-style:italic;color:var(--gold)}
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:5rem;align-items:start}
+.about-text p{font-size:0.95rem;color:var(--text-muted);font-weight:300;line-height:1.9;margin-bottom:1.25rem}
+.about-text p strong{color:var(--text);font-weight:500}
+.skills-wrap{display:flex;flex-direction:column;gap:10px}
+.skill-row{display:flex;align-items:center;gap:14px;padding:11px 16px;background:var(--surface);border:1px solid var(--border);border-radius:3px;transition:border-color 0.2s,background 0.2s}
+.skill-row:hover{border-color:rgba(201,169,110,0.3);background:var(--surface2)}
+.skill-icon{width:28px;height:28px;border-radius:50%;background:rgba(201,169,110,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.skill-icon svg{width:13px;height:13px;fill:none;stroke:var(--gold);stroke-width:1.5}
+.skill-name{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-muted);flex:1}
+.skill-bar-wrap{width:80px;height:2px;background:var(--border2);border-radius:1px}
+.skill-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--teal));border-radius:1px;width:0;transition:width 1.2s ease}
+#experience{background:var(--bg)}
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--gold),transparent)}
+.tl-item{position:relative;margin-bottom:3rem}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-30px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:1px solid var(--gold);transition:background 0.2s}
+.tl-item:hover .tl-dot{background:var(--gold)}
+.tl-period{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.5rem}
+.tl-role{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--text);line-height:1.2;margin-bottom:2px}
+.tl-company{font-size:0.82rem;color:var(--gold);font-weight:400;margin-bottom:1rem}
+.tl-loc{color:var(--text-dim);margin-left:8px}
+.tl-items{list-style:none}
+.tl-items li{font-size:0.88rem;color:var(--text-muted);padding:5px 0 5px 18px;position:relative;font-weight:300;line-height:1.65}
+.tl-items li::before{content:'◆';position:absolute;left:0;color:var(--gold);font-size:0.4rem;top:10px}
+.tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}
+.tl-tag{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.06em;padding:3px 10px;background:rgba(94,207,190,0.08);color:var(--teal);border:1px solid rgba(94,207,190,0.18);border-radius:2px}
+#certifications{background:var(--bg2)}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
+.cert-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:2rem;position:relative;overflow:hidden;transition:transform 0.25s,border-color 0.25s}
+.cert-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,110,0.05) 0%,transparent 60%);pointer-events:none}
+.cert-card:hover{transform:translateY(-3px);border-color:rgba(201,169,110,0.25)}
+.cert-issuer{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
+.cert-issuer::before{content:'';display:inline-block;width:16px;height:16px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:2px;flex-shrink:0;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
+.cert-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:1.25rem}
+.cert-foot{display:flex;justify-content:space-between;align-items:center}
+.cert-date{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--text-dim)}
+.cert-link{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--teal);text-decoration:none;transition:opacity 0.2s}
+.cert-link:hover{opacity:0.65}
+#projects{background:var(--bg)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+.proj-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2rem;transition:border-color 0.25s,transform 0.25s;position:relative;overflow:hidden}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.3s}
+.proj-card:hover{border-color:rgba(201,169,110,0.2);transform:translateY(-2px)}
+.proj-card:hover::before{opacity:1}
+.proj-num{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--text-dim);margin-bottom:1rem;letter-spacing:0.05em}
+.proj-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:0.75rem;line-height:1.25}
+.proj-desc{font-size:0.86rem;color:var(--text-muted);line-height:1.75;font-weight:300}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:1.25rem}
+.proj-tag{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.06em;padding:3px 9px;background:rgba(112,152,245,0.08);color:var(--blue);border:1px solid rgba(112,152,245,0.18);border-radius:2px}
+#contact{background:var(--bg2)}
+.contact-wrap{max-width:600px}
+.contact-desc{font-size:0.95rem;color:var(--text-muted);margin-bottom:2rem;font-weight:300;line-height:1.85}
+.contact-item{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-muted);margin-bottom:0.75rem;letter-spacing:0.06em}
+.contact-item a{color:var(--teal);text-decoration:none}
+.contact-item a:hover{text-decoration:underline}
+footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,8vw,8rem);display:flex;align-items:center;justify-content:space-between;background:var(--bg)}
+footer p{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;color:var(--text-dim)}
+footer a{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--gold);text-decoration:none;opacity:0.6;transition:opacity 0.2s}
+footer a:hover{opacity:1}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:3rem}#sphere-canvas{opacity:0.2;right:-80px}}
+@media(max-width:680px){.nav-links{display:none}.hero-stats{gap:1.5rem}#sphere-canvas{display:none}}
+</style>
 </head>
+<body>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curRing"></div>
+<div id="particles"></div>
 
-<body class="bg-indigo-50 text-gray-800">
-    <!-- Navbar Links -->
-    <nav id="navbar" class="bg-slate-900 sticky top-0 z-50">
-        <div class="max-w-screen-2xl mx-auto flex justify-between items-center px-4 py-3">
-            <!-- Logo -->
-            <a href="#" class="text-2xl font-bold text-white">Pushan Pore</a>
+<nav>
+  <a href="#hero" class="nav-logo">Pushan <span>Pore</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://pushanpore014.github.io/Portfolio/CV/Pushan_Pore_Resume.pdf" class="nav-resume" target="_blank">Résumé ↗</a>
+</nav>
 
-            <!-- Menu Links (desktop) -->
-            <div id="menu" class="hidden md:flex space-x-6 text-white text-lg">
-                <a href="#about" class="hover:text-green-400">About</a>
-                <a href="#experience" class="hover:text-green-400">Experience</a>
-                <a href="#certifications" class="hover:text-green-400">Certifications</a>
-                <a href="#projects" class="hover:text-green-400">Projects</a>
-                <a href="#contact" class="hover:text-green-400">Contact</a>
-                <a href="CV/Pushan_Pore_Resume.pdf" target="_blank" class="hover:text-green-400">Resume</a>
-            </div>
+<section id="hero">
+  <canvas id="sphere-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Sr. Data Engineer · Kolkata, India</span>
+    </div>
+    <h1 class="hero-name">Pushan<br><strong>Pore.</strong></h1>
+    <p class="hero-title">Turning raw data into real intelligence.</p>
+    <p class="hero-desc">
+      <strong>3.5+ years</strong> engineering cloud data systems at Capgemini —
+      from <strong>medallion-architecture pipelines</strong> on Azure to
+      <strong>Splunk-powered observability</strong> for global enterprises like Bayer, CSL Behring &amp; Carnival.
+      2× Microsoft Azure Certified.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-gold">View Projects</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-val">3<span>.5+</span></span><span class="stat-lbl">Years Experience</span></div>
+      <div><span class="stat-val">23<span>+</span></span><span class="stat-lbl">Tables Migrated</span></div>
+      <div><span class="stat-val">4<span>×</span></span><span class="stat-lbl">Certifications</span></div>
+    </div>
+  </div>
+</section>
 
-            <!-- Hamburger Icon (mobile) -->
-            <button id="hamburger" class="md:hidden flex items-center text-white focus:outline-none">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-        </div>
+<div class="section-divider"></div>
 
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-slate-900 text-white px-6 pb-6 flex flex-col space-y-4 text-lg">
-            <a href="#about" class="block py-2 hover:text-green-400">About</a>
-            <a href="#experience" class="block py-2 hover:text-green-400">Experience</a>
-            <a href="#certifications" class="block py-2 hover:text-green-400">Certifications</a>
-            <a href="#projects" class="block py-2 hover:text-green-400">Projects</a>
-            <a href="#contact" class="block py-2 hover:text-green-400">Contact</a>
-            <a href="CV/Pushan_Pore_Resume.pdf" target="_blank" class="block py-2 hover:text-green-400">Resume</a>
-        </div>
-    </nav>
+<section id="about">
+  <div class="reveal">
+    <div class="sec-label">01 — About</div>
+    <h2 class="sec-title">Architect of<br><em>data at scale</em></h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a <strong>Senior Data Engineer</strong> at Capgemini, specialising in Azure cloud platforms and Big Data processing. My work spans two major domains: <strong>legacy-to-cloud migration</strong> using Bronze–Silver–Gold medallion architecture, and <strong>advanced observability analytics</strong> using Splunk ITSI for Fortune-500 clients.</p>
+      <p>I've migrated <strong>23+ tables and millions of records</strong> from legacy PostgreSQL to Azure, built SCD Type 2 pipelines, automated hybrid ingestion with Self-hosted Integration Runtime, and developed Splunk ITSI dashboards that reduced manual monitoring effort by <strong>100%</strong>.</p>
+      <p>Certified across four credentials — <strong>DP-203 · DP-900 · ServiceNow CSA · ServiceNow CAD</strong> — and a passionate <strong>F1 enthusiast</strong> who applies data thinking to race strategy.</p>
+    </div>
+    <div class="skills-wrap reveal">
+      <div class="skill-row"><div class="skill-icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h12M6 14h8"/></svg></div><span class="skill-name">Azure Data Factory</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="95"></div></div></div>
+      <div class="skill-row"><div class="skill-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v8l4 4"/></svg></div><span class="skill-name">Azure Databricks</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="90"></div></div></div>
+      <div class="skill-row"><div class="skill-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="8" rx="10" ry="4"/><path d="M2 8v8c0 2.2 4.5 4 10 4s10-1.8 10-4V8"/></svg></div><span class="skill-name">ADLS Gen2 / Synapse</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="88"></div></div></div>
+      <div class="skill-row"><div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div><span class="skill-name">PySpark / SparkSQL</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="85"></div></div></div>
+      <div class="skill-row"><div class="skill-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><span class="skill-name">Python / SQL</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="92"></div></div></div>
+      <div class="skill-row"><div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M2 12h20M12 2l8 10-8 10-8-10z"/></svg></div><span class="skill-name">Splunk / SPL / ITSI</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="88"></div></div></div>
+      <div class="skill-row"><div class="skill-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 13h4"/></svg></div><span class="skill-name">ServiceNow / CMDB</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="80"></div></div></div>
+    </div>
+  </div>
+</section>
 
+<div class="section-divider"></div>
 
-    <!-- Hero Section -->
-    <section class="h-screen bg-cover bg-center"
-        style="background-image: url('assets/bg.jpg'); background-attachment: fixed; background-repeat: no-repeat; background-size: cover; ">
-        <div class="flex justify-center items-center h-full bg-black bg-opacity-40">
-            <div class="text-center text-white px-4">
-                <h1 class="text-4xl sm:text-5xl font-bold">Hello, I'm Pushan</h1>
-                <p class="mt-4 text-lg">A Passionate Data Engineer & F1 Enthusiast</p>
-                <div class="socials"></div>
-            </div>
-        </div>
-    </section>
+<section id="experience">
+  <div class="reveal">
+    <div class="sec-label">02 — Experience</div>
+    <h2 class="sec-title">Career<br><em>trajectory</em></h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Jul 2024 — Present</div>
+      <div class="tl-role">Sr. Analyst — Data Engineer</div>
+      <div class="tl-company">Capgemini Technology Services India Ltd<span class="tl-loc">· Kolkata</span></div>
+      <ul class="tl-items">
+        <li>Migrated 23+ tables and millions of records from legacy PostgreSQL to Azure using ADF, ADLS Gen2, and Spark — implementing a Bronze–Silver–Gold medallion architecture.</li>
+        <li>Built Spark-based data cleansing and SCD Type 2 pipelines, improving data quality and historical accuracy for downstream analytics.</li>
+        <li>Developed scalable batch data processing pipelines for high-volume datasets, ensuring consistent and reliable data delivery.</li>
+        <li>Automated hybrid ingestion using Self-hosted Integration Runtime — enabling secure, append-only data loads.</li>
+        <li>Integrated advanced SQL techniques including CTEs, window functions, and recursive queries.</li>
+        <li>Developed Splunk ITSI dashboards to streamline monitoring alerts and reduce manual effort by 100%.</li>
+        <li>Utilised parallel processing with PySpark to push processed data from ADLS Gen2 into Azure Synapse data warehouse.</li>
+      </ul>
+      <div class="tl-tags">
+        <span class="tl-tag">ADF</span><span class="tl-tag">ADLS Gen2</span><span class="tl-tag">Databricks</span><span class="tl-tag">PySpark</span><span class="tl-tag">Medallion Architecture</span><span class="tl-tag">SCD Type 2</span><span class="tl-tag">Splunk ITSI</span><span class="tl-tag">Azure Synapse</span>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Sep 2022 — Jun 2024</div>
+      <div class="tl-role">Analyst — CMDB Data Management</div>
+      <div class="tl-company">Capgemini Technology Services India Ltd<span class="tl-loc">· Mumbai</span></div>
+      <ul class="tl-items">
+        <li>Served as CMDB Manager for Netherlands-based enterprise clients.</li>
+        <li>Automated on-premise to ServiceNow CMDB migration workflows.</li>
+        <li>Performed weekly audits maintaining a healthy, accurate CMDB.</li>
+        <li>Developed SQL scripts for extracting on-prem CMDB data, enabling deep-dive data analysis.</li>
+        <li>CMDB development including client scripts and server-side scripting.</li>
+      </ul>
+      <div class="tl-tags">
+        <span class="tl-tag">ServiceNow</span><span class="tl-tag">CMDB</span><span class="tl-tag">SQL</span><span class="tl-tag">Data Migration</span>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Aug 2018 — Sep 2022</div>
+      <div class="tl-role">B.Tech — Computer Science & Engineering</div>
+      <div class="tl-company">Heritage Institute of Technology<span class="tl-loc">· GPA 8.73 / 10</span></div>
+      <ul class="tl-items">
+        <li>Graduated with distinction in Computer Science and Engineering.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <!-- About Me Section -->
-    <section id="about" class="py-16 px-6 bg-gray-100">
-        <div class="max-w-screen-xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-6">About Me</h2>
-            <p class="text-lg text-gray-600">
-                I am an Azure Data Engineer with over 2.8 years of hands-on experience in designing, developing, and
-                optimizing data solutions on the Microsoft Azure platform. At Capgemini, I have played a key role in two
-                significant projects. The first as a Azure Data Engineer involving data migration from legacy
-                on-premises systems to Azure SQL Database, where I utilized Azure Data Factory and Databricks to build
-                efficient data pipelines focused on data cleansing, transformation, and analysis, while maintaining a
-                seamless data flow. The second project centers on advanced analytics using Splunk for high-profile
-                clients such as Toll, Bayer, and CSL Behring. In this role, I leverage Search Processing Language (SPL)
-                to analyze unstructured data and implement critical features like anomaly detection, dynamic
-                thresholding, and predictive modeling through Splunk's Machine Learning Toolkit (MLTK) to reduce
-                incident overhead and improve operational efficiency. I am proficient in Azure Data Factory, Azure Data
-                Lake Storage, SQL, Python, SPL, Databricks, and MLTK, which enables me to deliver comprehensive data
-                engineering and analytics solutions that meet complex business needs.
-            </p>
-        </div>
-    </section>
+<div class="section-divider"></div>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-16 px-6">
-        <div class="max-w-screen-xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-6">Experience</h2>
-            <div class="space-y-8">
-                <!-- Job 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-semibold">Junior Data Engineer | Capgemini India</h3>
-                    <p class="text-gray-500 text-lg mt-2">Jul 2024 - Present</p>
-                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
-                        <p>Developed and maintained data pipelines using Azure Data Factory for Data Migration and
-                            Transformation for NL customers.</p>
-                        <br>
-                        <p>Database Migration from legacy MSSQL server to ADLS.</p>
-                        <br>
-                        <p>Developed advanced analytics in Splunk using SPL, enabling capacity prediction, anomaly
-                            detection, delay logic </p>
-                        <br>
-                        <p>Rapid Resolver to accelerate issue resolution and improve system performance.</p>
-                    </ul>
-                </div>
-                <!-- Job 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-semibold">CMDB Data Management | Capgemini India</h3>
-                    <p class="text-gray-500 text-lg mt-2">Sep 2022 - June 2024</p>
-                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
-                        <p>Worked on data cleaning and maintained a healthy CMDB.</p>
-                        <br>
-                        <p>Created data reports and visualizations for Clients.</p>
-                        <br>
-                        <p>Worked on the migration of data from legacy system to Servicenow CMDB.</p>
-                        <br>
-                        <p>CMDB development, client scripts, Serverside scripting</p>
-                    </ul>
-                </div>
-                <!-- Job 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-semibold">Intern | CodeDrills</h3>
-                    <p class="text-gray-500 text-lg mt-2">May 2022 - Sep 2022</p>
-                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
-                        <p>Worked as a SQL question setter for hiring assessments at CodeDrills. (Problem setting and
-                            creating test case generator).</p>
-                        <br>
-                        <p>Developed Python script for generating DML commands for pushing test data into tables of an
-                            SQL Database.</p>
-                        <br>
-                        <p>Tuning the performance of SQL query generated by python scripting. Which reduced 90% Manual
-                            effort while uploading a problem to environment</p>
-                    </ul>
-                </div>
+<section id="certifications">
+  <div class="reveal">
+    <div class="sec-label">03 — Certifications</div>
+    <h2 class="sec-title">Verified<br><em>credentials</em></h2>
+  </div>
+  <div class="certs-grid reveal">
+    <div class="cert-card">
+      <div class="cert-issuer">Microsoft</div>
+      <div class="cert-name">Azure Data Engineer Associate (DP-203)</div>
+      <div class="cert-foot"><span class="cert-date">Issued Dec 2024</span><a href="https://tinyurl.com/Data-Engineer-Associate" class="cert-link" target="_blank">Verify →</a></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">Microsoft</div>
+      <div class="cert-name">Azure Data Fundamentals (DP-900)</div>
+      <div class="cert-foot"><span class="cert-date">Issued Sep 2024</span><a href="https://tinyurl.com/Data-Engineer-Fundamentals" class="cert-link" target="_blank">Verify →</a></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">ServiceNow</div>
+      <div class="cert-name">Certified Application Developer (CAD)</div>
+      <div class="cert-foot"><span class="cert-date">ServiceNow</span></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">ServiceNow</div>
+      <div class="cert-name">Certified System Administrator (CSA)</div>
+      <div class="cert-foot"><span class="cert-date">ServiceNow</span></div>
+    </div>
+  </div>
+</section>
 
-            </div>
-        </div>
-    </section>
+<div class="section-divider"></div>
 
-    <!-- Certifications -->
-    <section id="certifications" class="py-16 px-6">
-        <div class="max-w-screen-xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-6">Certifications</h2>
-            <div class="space-y-8">
-                <!-- certificate 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg text-justify">
-                    <h3 class="text-2xl font-semibold">Azure Data Engineer Associate Certification <a
-                            href="https://tinyurl.com/Data-Engineer-Associate" target="_blank"> 🔗</a></h3>
-                    <p class="text-gray-500 text-lg mt-2">Microsoft</p>
-                    <p class="text-gray-500 text-lg mt-2">Issued : 03-Dec-2024</p>
-                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
-                        <!-- Add certificate details -->
-                    </ul>
-                </div>
+<section id="projects">
+  <div class="reveal">
+    <div class="sec-label">04 — Projects</div>
+    <h2 class="sec-title">What I've<br><em>delivered</em></h2>
+  </div>
+  <div class="projects-grid reveal">
+    <div class="proj-card">
+      <div class="proj-num">Project · 01</div>
+      <div class="proj-title">Azure Legacy-to-Cloud Migration</div>
+      <p class="proj-desc">Migrated 23+ tables and millions of records from legacy PostgreSQL to Azure for Capgemini NL. Designed a Bronze–Silver–Gold medallion architecture with SCD Type 2 pipelines, Self-hosted IR for secure ingestion, and Azure Synapse as the analytics warehouse.</p>
+      <div class="proj-tags"><span class="proj-tag">ADF</span><span class="proj-tag">ADLS Gen2</span><span class="proj-tag">Databricks</span><span class="proj-tag">PySpark</span><span class="proj-tag">Synapse</span><span class="proj-tag">PostgreSQL</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">Project · 02</div>
+      <div class="proj-title">Splunk Big Data Observability</div>
+      <p class="proj-desc">Built Splunk ITSI dashboards for global clients including Bayer, CSL Behring, and Carnival. Delivered anomaly detection, capacity prediction, delay logic, and custom predictive analyser dashboards — reducing manual monitoring overhead by 100%.</p>
+      <div class="proj-tags"><span class="proj-tag">Splunk</span><span class="proj-tag">SPL</span><span class="proj-tag">ITSI</span><span class="proj-tag">MLTK</span><span class="proj-tag">Anomaly Detection</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">Project · 03</div>
+      <div class="proj-title">CMDB Automation & Migration</div>
+      <p class="proj-desc">Automated on-premise to ServiceNow CMDB migration for Netherlands-based enterprise clients. Developed SQL extraction scripts for legacy CMDB data with server-side and client-side scripting for CMDB development and reporting.</p>
+      <div class="proj-tags"><span class="proj-tag">ServiceNow</span><span class="proj-tag">SQL</span><span class="proj-tag">CMDB</span><span class="proj-tag">Data Migration</span></div>
+    </div>
+  </div>
+</section>
 
-                <!-- certificate 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg text-justify">
-                    <h3 class="text-2xl font-semibold">Azure Data Engineer Fundamentals Certification <a
-                            href="https://tinyurl.com/Data-Engineer-Fundamentals" target="_blank"> 🔗</a></h3>
-                    <p class="text-gray-500 text-lg mt-2">Microsoft</p>
-                    <p class="text-gray-500 text-lg mt-2">Issued : 01-Sep-2024</p>
-                    <ul class="mt-4 list-disc list-inside text-left text-gray-600">
-                        <!-- Add certificate details -->
-                    </ul>
-                </div>
+<div class="section-divider"></div>
 
-                <!-- certificate 3 -->
-                <!-- <div class="bg-white p-6 rounded-xl shadow-lg text-justify">
-                    <h3 class="text-2xl font-semibold">Certified System Administrator <a
-                            href="https://tinyurl.com/CSAServicenow" target="_blank"> 🔗</a></h3>
-                    <p class="text-gray-500 text-lg mt-2">ServiceNow</p>
-                    <p class="text-gray-500 text-lg mt-2">Issued : 04-Dec-2023</p>
-                   
-                </div> -->
+<section id="contact">
+  <div class="reveal">
+    <div class="sec-label">05 — Contact</div>
+    <div class="contact-wrap">
+      <h2 class="sec-title">Let's build<br><em>something</em></h2>
+      <p class="contact-desc">Open to new data engineering opportunities, collaborations, or conversations about Azure, Splunk, and F1 strategy.</p>
+      <div class="contact-item"><span>✉</span><a href="https://mail.google.com/mail/?view=cm&to=pushan.pore.work@gmail.com" target="_blank">pushan.pore.work@gmail.com</a></div>
+      <div class="contact-item"><span>☎</span><span>9073775628</span></div>
+      <div class="contact-item"><span>⌂</span><span>Kolkata, India</span></div>
+      <div class="contact-links" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.75rem">
+        <a href="https://mail.google.com/mail/?view=cm&to=pushan.pore.work@gmail.com" class="btn-gold" target="_blank">Email Me</a>
+        <a href="https://www.linkedin.com/in/pushan-pore-1401/" class="btn-outline" target="_blank">LinkedIn ↗</a>
+        <a href="https://pushanpore014.github.io/Portfolio/" class="btn-outline" target="_blank">Portfolio ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-            </div>
-        </div>
-    </section>
+<footer>
+  <p>© 2025 Pushan Pore — Data Engineer</p>
+  <a href="#hero">Back to top ↑</a>
+</footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// CURSOR
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-4)+'px';cur.style.top=(my-4)+'px'});
+(function ac(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=(rx-16)+'px';ring.style.top=(ry-16)+'px';requestAnimationFrame(ac)})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';ring.style.transform='scale(1.5)'});el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';ring.style.transform='scale(1)'})});
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 px-6 bg-gray-100">
-        <div class="max-w-screen-xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-6">Key Projects</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-semibold">Project 1: Azure Pipeline Development</h3>
-                    <p class="mt-4 text-gray-600">Contributed extensively to a database migration project for Capgemini
-                        Netherlands,
-                        focusingmonitoring and reporting setup using Azure. Built ETL pipelines in Azure Data Factory,
-                        managed
-                        data in ADLS Gen2, and performedlarge-scale processing with Azure Databricks and Spark.
-                    </p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-semibold">Project 2: Azure Data Flow </h3>
-                    <p class="mt-4 text-gray-600">As part of a collaborative team, I played a key role in developing and
-                        implementing an end-to-end data pipeline using Azure Data Factory,
-                        focusing on data preprocessing and cleaning to ensure accurate and reliable reporting.</p>
-                </div>
+// PARTICLES
+const pc=document.getElementById('particles');
+for(let i=0;i<16;i++){const p=document.createElement('div');p.className='particle';const x=Math.random()*40+5,y=Math.random()*80+10;p.style.cssText=`left:${x}%;top:${y}%;position:absolute;--dur:${4+Math.random()*6}s;--del:${Math.random()*4}s;--dx:${(Math.random()-.5)*60}px`;pc.appendChild(p)}
 
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-semibold">Project 3: Splunk Advanced Analytics</h3>
-                    <p class="mt-4 text-gray-600">Utilized Splunk and Search Processing Language (SPL) to perform
-                        advanced analytics, developing anomaly detection, delay logic, and rapid resolution mechanisms
-                        to minimize major incident impact for North American and European clients, including Toll and
-                        CSL Behring.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+// THREE.JS SPHERE
+(function(){
+  const canvas=document.getElementById('sphere-canvas');
+  if(!canvas||typeof THREE==='undefined')return;
+  const W=canvas.offsetWidth||560,H=canvas.offsetHeight||560;
+  canvas.width=W*window.devicePixelRatio;canvas.height=H*window.devicePixelRatio;
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  renderer.setPixelRatio(window.devicePixelRatio);renderer.setSize(W,H);renderer.setClearColor(0x000000,0);
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(42,W/H,0.1,1000);camera.position.z=3.0;
+  const group=new THREE.Group();scene.add(group);
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 px-6 bg-sky-500/100 text-white">
-        <div class="max-w-screen-xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-6">Contact Me</h2>
-            <p class="text-lg">Feel free to reach out to me via Email or LinkedIn.</p>
-            <div class="mt-6">
-                <a href="https://mail.google.com/mail/?view=cm&to=pushan.pore.work@gmail.com" target="_blank"
-                    class="bg-white text-blue-600 py-2 px-6 rounded-lg text-lg font-semibold hover:bg-gray-200">
-                    Email Me
-                </a>
-                <a href="https://www.linkedin.com/in/pushan-pore-1401/" target="_blank"
-                    class="ml-4 bg-blue-800 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:bg-blue-700">LinkedIn</a>
-            </div>
-        </div>
-    </section>
+  // Main geodesic sphere — icosahedron subdivision 3 for football-like polygon structure
+  const icoGeo=new THREE.IcosahedronGeometry(1,3);
+  const edges=new THREE.EdgesGeometry(icoGeo);
+  const matOuter=new THREE.LineBasicMaterial({color:0xc9a96e,transparent:true,opacity:0.5});
+  const wireOuter=new THREE.LineSegments(edges,matOuter);
+  group.add(wireOuter);
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-4">
-        <div class="max-w-screen-xl mx-auto text-center">
-            <p>&copy; 2025 Pushan Pore.</p>
-        </div>
-    </footer>
+  // Inner smaller geodesic
+  const icoGeo2=new THREE.IcosahedronGeometry(0.68,2);
+  const edges2=new THREE.EdgesGeometry(icoGeo2);
+  const matInner=new THREE.LineBasicMaterial({color:0x5ecfbe,transparent:true,opacity:0.18});
+  group.add(new THREE.LineSegments(edges2,matInner));
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTopBtn" title="Go to top"
-        class="fixed bottom-6 right-6 hidden white hover:bg-inherit text-black px-4 py-2 rounded-full shadow-xl z-50">
-        ↑ Top
-    </button>
+  // Three orbital rings at different tilts
+  const torusMat=(c,o)=>new THREE.MeshBasicMaterial({color:c,transparent:true,opacity:o,wireframe:false});
+  [[0xc9a96e,0.3,0,0],[0x5ecfbe,0.15,Math.PI/3,Math.PI/5],[0x7098f5,0.12,Math.PI/2,Math.PI/4]].forEach(([col,op,rx,ry])=>{
+    const t=new THREE.Mesh(new THREE.TorusGeometry(1,0.003,4,90),torusMat(col,op));
+    t.rotation.x=rx;t.rotation.y=ry;group.add(t);
+  });
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+  // Vertex dots on surface
+  const verts=icoGeo.attributes.position;
+  const dotPositions=[];
+  for(let i=0;i<verts.count;i+=2){
+    dotPositions.push(verts.getX(i),verts.getY(i),verts.getZ(i));
+  }
+  const dotGeo=new THREE.BufferGeometry();
+  dotGeo.setAttribute('position',new THREE.Float32BufferAttribute(dotPositions,3));
+  group.add(new THREE.Points(dotGeo,new THREE.PointsMaterial({color:0xe8c98a,size:0.022,transparent:true,opacity:0.8})));
 
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+  // Axis pole
+  const pole=new THREE.Line(
+    new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,-1.2,0),new THREE.Vector3(0,1.2,0)]),
+    new THREE.LineBasicMaterial({color:0xc9a96e,transparent:true,opacity:0.2})
+  );
+  group.add(pole);
 
-        // Close mobile menu when link clicked
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+  let t=0,tx=0,ty=0,cx=0,cy=0;
+  document.addEventListener('mousemove',e=>{tx=(e.clientX/window.innerWidth-.5)*0.9;ty=(e.clientY/window.innerHeight-.5)*0.6});
+  (function animate(){
+    requestAnimationFrame(animate);
+    t+=0.004;cx+=(tx-cx)*0.035;cy+=(ty-cy)*0.035;
+    group.rotation.y=t+cx;group.rotation.x=0.1+cy;
+    group.children[2].rotation.x+=0.005;
+    group.children[3].rotation.z+=0.003;
+    renderer.render(scene,camera);
+  })();
+})();
 
-        // Show/hide scroll to top button
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.classList.remove('hidden');
-            } else {
-                scrollToTopBtn.classList.add('hidden');
-            }
-        });
+// SCROLL REVEAL
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-        // Scroll to top on click
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-    </script>
-
+// SKILL BARS
+const bobs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.querySelectorAll('.skill-bar').forEach(b=>b.style.width=b.dataset.w+'%')})},{threshold:0.2});
+document.querySelectorAll('.skills-wrap').forEach(el=>bobs.observe(el));
+</script>
+</body>
 </html>
