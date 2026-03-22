@@ -6,7 +6,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pushan Pore — Data Engineer</title>
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2307080d'/%3E%3Cellipse cx='7' cy='10' rx='4' ry='2' fill='none' stroke='%23c9a96e' stroke-width='1.5'/%3E%3Crect x='3' y='10' width='8' height='6' fill='%2307080d'/%3E%3Cellipse cx='7' cy='16' rx='4' ry='2' fill='none' stroke='%23c9a96e' stroke-width='1.5'/%3E%3Cline x1='3' y1='10' x2='3' y2='16' stroke='%23c9a96e' stroke-width='1.5'/%3E%3Cline x1='11' y1='10' x2='11' y2='16' stroke='%23c9a96e' stroke-width='1.5'/%3E%3Cellipse cx='25' cy='10' rx='4' ry='2' fill='none' stroke='%235ecfbe' stroke-width='1.5'/%3E%3Crect x='21' y='10' width='8' height='6' fill='%2307080d'/%3E%3Cellipse cx='25' cy='16' rx='4' ry='2' fill='none' stroke='%235ecfbe' stroke-width='1.5'/%3E%3Cline x1='21' y1='10' x2='21' y2='16' stroke='%235ecfbe' stroke-width='1.5'/%3E%3Cline x1='29' y1='10' x2='29' y2='16' stroke='%235ecfbe' stroke-width='1.5'/%3E%3Cline x1='11' y1='13' x2='20' y2='13' stroke='%23e8c98a' stroke-width='1.5' stroke-dasharray='2 1.5'/%3E%3Cpolygon points='20,10.5 24,13 20,15.5' fill='%23e8c98a'/%3E%3Crect x='13' y='20' width='6' height='6' rx='1' fill='none' stroke='%237098f5' stroke-width='1.3'/%3E%3Cline x1='15' y1='22' x2='17' y2='22' stroke='%237098f5' stroke-width='1'/%3E%3Cline x1='15' y1='24' x2='17' y2='24' stroke='%237098f5' stroke-width='1'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"
@@ -962,6 +963,7 @@
 </head>
 
 <body>
+  <canvas id="starfield" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
   <div class="cursor" id="cur"></div>
   <div class="cursor-ring" id="curRing"></div>
   <div id="particles"></div>
@@ -1004,8 +1006,8 @@
       </div>
       <div class="hero-stats">
         <div><span class="stat-val">3<span>.5+</span></span><span class="stat-lbl">Years Experience</span></div>
-        <div><span class="stat-val">23<span>+</span></span><span class="stat-lbl">Tables Migrated</span></div>
-        <div><span class="stat-val">4<span>×</span></span><span class="stat-lbl">Certifications</span></div>
+        <!-- <div><span class="stat-val">23<span>+</span></span><span class="stat-lbl">Tables Migrated</span></div> -->
+        <div><span class="stat-val">4<span>×</span></span><span class="stat-lbl">Azure Certifications</span></div>
       </div>
     </div>
   </section>
@@ -1243,8 +1245,10 @@
         <p class="contact-desc">Open to new data engineering opportunities, collaborations, or conversations about
           Azure and Splunk</p>
         <div class="contact-item"><span>✉</span><a
-            href="https://mail.google.com/mail/?view=cm&to=pushan.pore.work@gmail.com"
-            target="_blank">pushan.pore.work@gmail.com</a></div>
+            href="https://mail.google.com/mail/?view=cm&to=pushan.pore.work@gmail.com" target="_blank"><span
+              class="__cf_email__"
+              data-cfemail="91e1e4e2f9f0ffbfe1fee3f4bfe6fee3fad1f6fcf0f8fdbff2fefc">[email&#160;protected]</span></a>
+        </div>
         <!-- <div class="contact-item"><span>☎</span><span>9073775628</span></div> -->
         <div class="contact-item"><span>⌂</span><span>Kolkata, India</span></div>
         <div class="contact-links" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.75rem">
@@ -1262,6 +1266,7 @@
     <a href="#hero">Back to top ↑</a>
   </footer>
 
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
     function toggleTheme() {
       const html = document.documentElement;
@@ -1398,14 +1403,74 @@
     const bobs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.querySelectorAll('.skill-bar').forEach(b => b.style.width = b.dataset.w + '%') }) }, { threshold: 0.2 });
     document.querySelectorAll('.skills-wrap').forEach(el => bobs.observe(el));
   </script>
+  <script>
+    (function () {
+      const canvas = document.getElementById('starfield');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const COLORS = [
+        'rgba(223,226,237,', 'rgba(223,226,237,', 'rgba(223,226,237,',
+        'rgba(201,169,110,', 'rgba(201,169,110,',
+        'rgba(94,207,190,',
+        'rgba(112,152,245,'
+      ];
+      const stars = Array.from({ length: 260 }, () => ({
+        x: Math.random(),
+        y: Math.random(),
+        r: Math.random() * 1.05 + 0.18,
+        base: Math.random() * 0.55 + 0.12,
+        speed: 0.003 + Math.random() * 0.01,
+        offset: Math.random() * Math.PI * 2,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)]
+      }));
+
+      const shooters = [];
+      function spawnShooter() {
+        shooters.push({ px: Math.random() * 0.65, py: Math.random() * 0.4, prog: 0, len: 0.06 + Math.random() * 0.06, spd: 0.003 + Math.random() * 0.003 });
+      }
+      spawnShooter();
+      const shooterTimer = setInterval(spawnShooter, 4200);
+
+      let t = 0, raf;
+      function draw() {
+        raf = requestAnimationFrame(draw);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        t += 1;
+        const W = canvas.width, H = canvas.height;
+        stars.forEach(s => {
+          const flicker = Math.sin(t * s.speed + s.offset) * 0.28 + 0.72;
+          ctx.beginPath();
+          ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = s.color + (s.base * flicker).toFixed(2) + ')';
+          ctx.fill();
+        });
+        for (let i = shooters.length - 1; i >= 0; i--) {
+          const ss = shooters[i];
+          ss.prog += ss.spd;
+          const x1 = (ss.px + ss.prog - ss.len) * W, y1 = (ss.py + (ss.prog - ss.len) * 0.4) * H;
+          const x2 = (ss.px + ss.prog) * W, y2 = (ss.py + ss.prog * 0.4) * H;
+          const fade = Math.min(1, (0.18 - ss.prog) / 0.05, ss.prog / 0.03);
+          if (fade <= 0 || ss.prog > 0.22) { shooters.splice(i, 1); continue; }
+          const g = ctx.createLinearGradient(x1, y1, x2, y2);
+          g.addColorStop(0, 'rgba(232,201,138,0)');
+          g.addColorStop(1, 'rgba(232,201,138,' + (fade * 0.8).toFixed(2) + ')');
+          ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
+          ctx.strokeStyle = g; ctx.lineWidth = 1.2; ctx.stroke();
+        }
+      }
+      draw();
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) cancelAnimationFrame(raf);
+        else draw();
+      });
+    })();
+  </script>
   <a href="#hero" id="totop"
     style="position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:var(--gold);color:#07080d;border-radius:3px;display:none;align-items:center;justify-content:center;text-decoration:none;font-size:1.1rem;font-weight:700;z-index:500;">↑</a>
-  <script>
-    window.addEventListener('scroll', () => {
-      const b = document.getElementById('totop');
-      b.style.display = window.scrollY > 300 ? 'flex' : 'none';
-    });
-  </script>
 </body>
 
 </html>
